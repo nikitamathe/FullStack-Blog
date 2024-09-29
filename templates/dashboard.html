@@ -1,0 +1,54 @@
+{% extends "dashboard_layout.html" %}
+{% block body %}
+<div class="container mt-5" style="padding-top: 15px;">
+    <!-- Your dashboard content goes here -->
+    <div
+        style="max-width: 800px; margin: 20px auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        <div class="flashes">
+            {% for category, message in messages %}
+            <p class="alert alert-{{ category }}">
+                {{ message }}
+            </p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <h3 style="font-size: 24px; margin-top: 0;">Hello, {{username}}</h3>
+        <h3 style="font-size: 24px;">Welcome to your Post Management Dashboard</h3>
+        <p style="font-size: 16px; line-height: 1.6;">You can manage your posts here.</p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sno</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                {% for post in posts %}
+                <tr>
+                    <td>{{post.sno}}</td>
+                    <td>{{post.title}}</td>
+                    <td>{{post.date}}</td>
+                    <td><a href="/edit/{{post.sno}}"><button class="btn btn-primary">Edit</button></a></td>
+                    <td><a href="/delete/{{post.sno}}"><button class="btn btn-primary">Delete</button></a></td>
+                </tr>
+
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}

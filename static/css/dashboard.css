@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
+}
+
+.navbar {
+    background-color: #007bff;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+}
+
+.logout-btn {
+    background-color: red;
+    border-radius: 10px;
+    /* Adjust the value to control the roundness */
+    border: 2px solid #000;
+    /* Example border style */
+}
+
+.logout-btn:hover {
+    background-color: #ffffff00;
+    border-color: #000000;
+    color: black;
+    /* Changing text color to black */
+}
+
+
+footer span {
+    background-color: ;
+    padding: 5px;
+}
+footer {
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+
+    background-color: #007bff;
+    padding: 5px;
+    margin-top: auto; /* Push the footer to the bottom */
+}

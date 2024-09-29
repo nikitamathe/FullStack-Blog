@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<!-- Page Header-->
+<header class="masthead" style="background-image: url(' {{ url_for('static', filename='assets/img/home-bg.jpg')}} ')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Full Stack Blog</h1>
+                    <span class="subheading">A Full Stack Blog Developed in Flask</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+
+            <!-- Applying to-do to fetch blog posts-->
+
+            {% for post in posts %}
+            <!-- Post preview-->
+            <h2> <a href="/post/{{post.slug}}" class="postt-title">{{post.title}}</a></h2>
+            <div class="post-preview">
+                <p>Subtitle: {{post.subtitle}}</p>
+                <!-- Displaying Content -->
+                <p class="in-post-home">{{post.content[0:150]}}...</p>
+
+                <p class="post-meta">
+                    Posted by
+                    <strong>{{post.author}}</strong>
+                    on {{post.date}}
+                </p>
+            </div>
+            <hr>
+            {% endfor %}
+
+
+            <!-- Divider-->
+            <!-- Pager-->
+            <div class="clearfix">
+                <div class="d-flex justify-content-between mb-4">
+                    <a class="btn btn-primary float-left" href="{{prev}}"> &larr;Previous</a>
+                    <a class="btn btn-primary float-right" href="{{next}}">Next &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

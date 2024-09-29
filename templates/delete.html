@@ -1,0 +1,54 @@
+{% extends "dashboard_layout.html" %}
+{% block body %}
+
+<link href="{{ url_for('static', filename='css/upload.css') }}" rel="stylesheet">
+
+
+<div id="confirmationMessage" style="display: none;">
+    <p>Post deleted successfully. Redirecting to dashboard...</p>
+</div>
+<form id="deleteForm" method="POST" action="{{ url_for('delete', sno=post.sno) }}"
+    style="margin-top: 70px; padding: 20px;">
+    <h2>Confirm Delete Post?</h2>
+
+    <div>
+        <p><strong>Title: </strong> {{ post.title }}</p>
+        <p><strong>Content: </strong> {{ post.content }}</p>
+    </div>
+    <br>
+
+    <button id="dbutton" type="submit">Delete</button>
+    <button id="ubutton" type="button" onclick="cancelDelete()" style="margin-top: 10px;">Cancel</button>
+
+</form>
+
+<div id="confirmationMessage" style="display: none;">
+    <p>Post deleted successfully. Redirecting to dashboard...</p>
+</div>
+
+<script>
+    // Add event listener to the delete button
+    document.getElementById("dbutton").addEventListener("click", function () {
+        // Hide the deleteForm
+        document.getElementById("deleteForm").style.display = "none";
+
+        // Show the confirmationMessage
+        document.getElementById("confirmationMessage").style.display = "block";
+
+        // Redirect to the dashboard after 5 seconds
+        setTimeout(function () {
+            window.location.href = "{{ url_for('dashboard') }}";
+        }, 5000); // Redirect after 5 seconds (5000 milliseconds)
+    });
+
+
+
+    // Function to handle cancel button click
+    function cancelDelete() {
+        // Redirect to the dashboard
+        window.location.href = "{{ url_for('dashboard') }}";
+    }
+
+</script>
+
+{% endblock %}
